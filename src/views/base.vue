@@ -4,20 +4,40 @@
       <div class="setting"></div>
       <div class="label"></div>
     </div>
-
+    <div v-if="currentPage==='Information'">
+      <information></information>
+    </div>
+    <div v-else-if="currentPage==='Sleep'"></div>
+    <div v-else-if="currentPage==='Habit'">
+      <Habit></Habit>
+    </div>
+    <div v-else-if="currentPage==='Sport'"></div>
+    <div v-else></div>
   </div>
 </template>
 <script lang="ts">
-import {Component, Vue,Prop} from "vue-property-decorator";
-
+import { Component, Vue, Prop } from "vue-property-decorator";
+import Information from "@/components/information/Information.vue";
+import Habit from "@/components/habit/Habit.vue";
+import Sport from "@/components/sport/Sport.vue";
 @Component({
-    name:"dataCollect"
+  name: "dataCollect",
+  components: {
+    Information,
+    Habit,
+    Sport
+  }
 })
-export default class extends Vue{
-    private currentPage:string="";
-    private currentLogo:string="";
-
-};
+export default class extends Vue {
+  private currentPage: string = "Information";
+  private pageSet: string[] = [
+    "Information",
+    "Sleep",
+    "Habit",
+    "Sport",
+    "Entertainment"
+  ];
+}
 </script>
 <style lang="stylus">
 html, body {
