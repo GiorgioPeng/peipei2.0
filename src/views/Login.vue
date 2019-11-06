@@ -8,7 +8,7 @@
       <input type="text" v-model.lazy="name" placeholder="姓名" />
       <input type="text" v-model.lazy="studentId" placeholder="学号" />
     </div>
-    <div class="loginButton"></div>
+    <div class="loginButton" @click="loginFunction"></div>
     <div class="agree">
       <input type="checkbox" id="agree" />
       <label for="agree">{{agree}}</label>
@@ -18,6 +18,9 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
+// import VueRouter from "vue-router";
+import router from "@/router/index";
+// Vue.use(VueRouter);
 
 @Component({
   name: "Login"
@@ -27,6 +30,12 @@ export default class extends Vue {
   private name: string = "";
   private studentId: string = "";
   private agree: string = "同意佩佩读取您的个人信息";
+
+  private loginFunction = () => {
+    router.push({
+      path: "/dataCollect"
+    });
+  };
 }
 </script>
 

@@ -5,26 +5,26 @@
       <div class="label"></div>
       <div class="typeLogo">
         <div
-          :class="{ checkedInformation : checkedInformation , noCheckedInformation : noCheckedInformation }"
+          :class="{ checkedInformation : isCheckedInformation , noCheckedInformation : !isCheckedInformation }"
         ></div>
-        <div :class="{isCheckedSleep?checkedSleep:noCheckedSleep}"></div>
-        <div :class="isCheckedHabit"></div>
-        <div :class="isCheckedSport"></div>
+        <div :class="{ checkedSleep : isCheckedSleep , noCheckedSleep : !isCheckedSleep }"></div>
+        <div :class="{ checkedHabit : isCheckedHabit , noCheckedHabit : !isCheckedHabit }"></div>
+        <div :class="{ checkedSport : isCheckedSport , noCheckedSport : !isCheckedSport}"></div>
         <div :class="isCheckedEntertainment"></div>
       </div>
     </div>
 
     <div class="main">
-      <div v-if="currentPage==='Information'">
+      <div v-if="currentPage === 'Information'">
         <Information></Information>
       </div>
-      <div v-else-if="currentPage==='Sleep'">
+      <div v-else-if="currentPage === 'Sleep'">
         <Sleep></Sleep>
       </div>
-      <div v-else-if="currentPage==='Habit'">
+      <div v-else-if="currentPage === 'Habit'">
         <Habit></Habit>
       </div>
-      <div v-else-if="currentPage==='Sport'">
+      <div v-else-if="currentPage === 'Sport'">
         <Sport></Sport>
       </div>
       <div v-else>
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div v-if="currentPage!=='Entertainment'" class="nextOne"></div>
+    <div v-if="currentPage !== 'Entertainment'" class="nextOne"></div>
     <div v-else class="finish"></div>
   </div>
 </template>
