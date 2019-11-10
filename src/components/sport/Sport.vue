@@ -15,7 +15,8 @@ export default class Sport extends Vue {}
 .sport {
   background-image: url('../../../public/sport/division.png');
   background-size: 100% 100%;
-  height: 300px;
-  width: 80vw;
+  height: 100vw;
+  width: 73.2vw;
+  margin: 16vw auto;
 }
 </style>
