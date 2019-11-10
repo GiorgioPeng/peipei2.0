@@ -10,8 +10,8 @@
     </div>
     <div class="loginButton" @click="loginFunction"></div>
     <div class="agree">
-      <input type="checkbox" id="agree" />
-      <label for="agree">{{agree}}</label>
+      <input :value="isAgree" @click="isAgree = !isAgree" type="checkbox" id="agree" />
+      <label for="agree">同意佩佩读取您的个人信息</label>
     </div>
   </div>
 </template>
@@ -29,12 +29,16 @@ export default class extends Vue {
   private school: string = "";
   private name: string = "";
   private studentId: string = "";
-  private agree: string = "同意佩佩读取您的个人信息";
+  public isAgree: boolean = false;
 
-  private loginFunction = () => {
-    router.push({
-      path: "/dataCollect"
-    });
+  private loginFunction(){
+    if (this.isAgree) {
+      router.push({
+        path: "/dataCollect"
+      });
+    } else {
+      console.log(this.isAgree);
+    }
   };
 }
 </script>

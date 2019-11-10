@@ -1,8 +1,12 @@
 <template>
   <div class="base">
     <div class="top">
+      <!-- 设置按钮 -->
+      <div class="topBgImg"></div>
       <div class="setting"></div>
+      <!-- 顶部表示页面的部分 -->
       <div class="label"></div>
+      <!-- 最上方的那几个掉下来的部分 -->
       <div class="typeLogo">
         <div
           :class="{ checkedInformation : isCheckedInformation , noCheckedInformation : !isCheckedInformation }"
@@ -10,21 +14,23 @@
         <div :class="{ checkedSleep : isCheckedSleep , noCheckedSleep : !isCheckedSleep }"></div>
         <div :class="{ checkedHabit : isCheckedHabit , noCheckedHabit : !isCheckedHabit }"></div>
         <div :class="{ checkedSport : isCheckedSport , noCheckedSport : !isCheckedSport}"></div>
-        <div :class="isCheckedEntertainment"></div>
+        <div
+          :class="{ checkedEntertainment : isCheckedEntertainment , noCheckedEntertainment : !isCheckedEntertainment}"
+        ></div>
       </div>
     </div>
-
+    <!-- 主要内容 -->
     <div class="main">
-      <div v-if="currentPage === 'Information'">
+      <div v-if="pageSet[currentPage] === 'Information'">
         <Information></Information>
       </div>
-      <div v-else-if="currentPage === 'Sleep'">
+      <div v-else-if="pageSet[currentPage] === 'Sleep'">
         <Sleep></Sleep>
       </div>
-      <div v-else-if="currentPage === 'Habit'">
+      <div v-else-if="pageSet[currentPage] === 'Habit'">
         <Habit></Habit>
       </div>
-      <div v-else-if="currentPage === 'Sport'">
+      <div v-else-if="pageSet[currentPage] === 'Sport'">
         <Sport></Sport>
       </div>
       <div v-else>
@@ -32,7 +38,8 @@
       </div>
     </div>
 
-    <div v-if="currentPage !== 'Entertainment'" class="nextOne"></div>
+    <!-- 页面切换及完成 -->
+    <div v-if="pageSet[currentPage] !== 'Entertainment'" @click="changePage" class="nextOne"></div>
     <div v-else class="finish"></div>
   </div>
 </template>
@@ -54,7 +61,7 @@ import Entertainment from "@/components/entertainment/EntertainmentPage1.vue";
   }
 })
 export default class extends Vue {
-  private currentPage: string = "Sport";
+  private currentPage: number = 0;
   private pageSet: string[] = [
     "Information",
     "Sleep",
@@ -62,6 +69,16 @@ export default class extends Vue {
     "Sport",
     "Entertainment"
   ];
+  private isChecked: boolean[] = [true, false, false, false, false];
+  // 之后用于替换下面五个属性
+  private isCheckedInformation: boolean = true;
+  private isCheckedSleep: boolean = true;
+  private isCheckedHabit: boolean = true;
+  private isCheckedSport: boolean = true;
+  private isCheckedEntertainment: boolean = true;
+  public changePage() {
+    this.currentPage++;
+  }
 }
 </script>
 <style lang="stylus">
@@ -84,6 +101,11 @@ html, body {
 }
 
 .top {
+  width: 100%;
+  height: 20vh;
+}
+
+.topBgImg {
   background-image: url('../../public/base/topBase.png');
   background-position: top left;
   background-repeat: no-repeat;
@@ -93,6 +115,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 20vh;
+  z-index: 3;
 }
 
 .setting {
@@ -105,14 +128,14 @@ html, body {
   position: fixed;
   top: 10vw;
   left: 5vw;
-  z-index: 2;
+  z-index: 4;
 }
 
 .label {
   position: fixed;
   top: 8vw;
   left: 30vw;
-  z-index: 2;
+  z-index: 4;
   background-image: url('../../public/base/sportTitle.png');
   background-size: 100% 100%;
   background-position: left top;
@@ -128,5 +151,70 @@ html, body {
   height: 64.5vh;
   overflow: hidden;
   background-color: rgba(10, 10, 10, 0.1);
+}
+
+.checkedInformation {
+  position: fixed;
+  left: 15vw;
+  top: 15vw;
+  background-image: url('../../public/base/checkedInformation.png');
+  background-size: 100% 100%;
+  width: 12.5vw;
+  height: 27vw;
+  z-index: 1;
+}
+
+.checkedSleep {
+  position: fixed;
+  top: 14vw;
+  left: 30vw;
+  background-image: url('../../public/base/checkedSleep.png');
+  background-size: 100% 100%;
+  width: 12.5vw;
+  height: 27vw;
+  z-index: 1;
+}
+
+.checkedHabit {
+  position: fixed;
+  top: 18vw;
+  left: 44.7vw;
+  background-image: url('../../public/base/checkedHabit.png');
+  background-size: 100% 100%;
+  width: 12.5vw;
+  height: 27vw;
+  z-index: 1;
+}
+
+.checkedSport {
+  position: fixed;
+  top: 25vw;
+  left: 59.5vw;
+  background-image: url('../../public/base/checkedSport.png');
+  background-size: 100% 100%;
+  width: 12.5vw;
+  height: 27vw;
+  z-index: 1;
+}
+
+.checkedEntertainment {
+  position: fixed;
+  top: 28vw;
+  left: 74vw;
+  background-image: url('../../public/base/checkedEntertainment.png');
+  background-size: 100% 100%;
+  width: 12.5vw;
+  height: 27vw;
+  z-index: 1;
+}
+
+.nextOne {
+  position: fixed;
+  bottom: 15vw;
+  left: 27.5vw;
+  background-image: url('../../public/base/nextBase.png');
+  background-size: 100% 100%;
+  width: 44.5vw;
+  height: 11.5vw;
 }
 </style>
