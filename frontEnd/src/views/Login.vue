@@ -117,7 +117,7 @@ input['type="checkbox"'] {
 }
 
 label {
-  font-size: 1vw;
+  font-size: 12px;
   color: rgba(77, 137, 138, 0.7);
 }
 </style>

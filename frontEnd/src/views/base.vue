@@ -150,13 +150,12 @@ html, body {
   width: 84vw;
   height: 64.5vh;
   overflow: hidden;
-  background-color: rgba(10, 10, 10, 0.1);
 }
 
 .checkedInformation {
   position: fixed;
   left: 15vw;
-  top: 15vw;
+  top: 13vw;
   background-image: url('../../public/base/checkedInformation.png');
   background-size: 100% 100%;
   width: 12.5vw;
@@ -166,7 +165,7 @@ html, body {
 
 .checkedSleep {
   position: fixed;
-  top: 14vw;
+  top: 11vw;
   left: 30vw;
   background-image: url('../../public/base/checkedSleep.png');
   background-size: 100% 100%;
@@ -177,7 +176,7 @@ html, body {
 
 .checkedHabit {
   position: fixed;
-  top: 18vw;
+  top: 15vw;
   left: 44.7vw;
   background-image: url('../../public/base/checkedHabit.png');
   background-size: 100% 100%;
@@ -188,7 +187,7 @@ html, body {
 
 .checkedSport {
   position: fixed;
-  top: 25vw;
+  top: 21vw;
   left: 59.5vw;
   background-image: url('../../public/base/checkedSport.png');
   background-size: 100% 100%;
@@ -199,7 +198,7 @@ html, body {
 
 .checkedEntertainment {
   position: fixed;
-  top: 28vw;
+  top: 24vw;
   left: 74vw;
   background-image: url('../../public/base/checkedEntertainment.png');
   background-size: 100% 100%;
@@ -210,7 +209,7 @@ html, body {
 
 .nextOne {
   position: fixed;
-  bottom: 15vw;
+  bottom: 5vw;
   left: 27.5vw;
   background-image: url('../../public/base/nextBase.png');
   background-size: 100% 100%;
