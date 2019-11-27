@@ -12,27 +12,67 @@
         <div class="pingpang"></div>
         <div class="yoga"></div>
       </div>
-            <div class="sportChoiceInput">
-        <div class="runInput"></div>
-        <div class="badmintonInput"></div>
-        <div class="basketballInput"></div>
-        <div class="soccerInput"></div>
-        <div class="bicycleInput"></div>
-        <div class="swimInput"></div>
-        <div class="weightInput"></div>
-        <div class="pingpangInput"></div>
-        <div class="yogaInput"></div>
+      <div class="sportChoiceInput">
+        <div
+          v-for="(kind,key) in sportChoiceInput"
+          :key="key"
+          @click="handleClick(kind)"
+          :class="{classForChecked:kind.checked,classForBasic:!kind.checked}"
+        ></div>
       </div>
     </div>
   </div>
 </template>
-<script>
+<script lang='ts'>
 import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component({
   name: "Sport"
 })
-export default class Sport extends Vue {}
+export default class Sport extends Vue {
+  private sportChoiceInput: Object[] = [
+    {
+      kind: "runInput",
+      checked: false
+    },
+    {
+      kind: "badmintonInput",
+      checked: false
+    },
+    {
+      kind: "basketballInput",
+      checked: false
+    },
+    {
+      kind: "soccerballInput",
+      checked: false
+    },
+    {
+      kind: "bicycleInput",
+      checked: false
+    },
+    {
+      kind: "swimInput",
+      checked: false
+    },
+    {
+      kind: "fitnessInput",
+      checked: false
+    },
+    {
+      kind: "pingpangInput",
+      checked: false
+    },
+    {
+      kind: "yogaInput",
+      checked: false
+    }
+  ];
+  public handleClick(kind: any) {
+    if (!kind.checked) kind.checked = true;
+    else kind.checked = false;
+  }
+}
 </script>
 <style lang="stylus">
 .sportBg {
@@ -44,7 +84,18 @@ export default class Sport extends Vue {}
 }
 
 .sportChoice {
-  transform: translate(5.5vw,5vh);
+  transform: translate(1.5vw, 3vh);
+  width: 95%;
+  height: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+}
+
+.sportChoiceInput {
+  transform: translate(0vw, -27vh);
   width: 95%;
   height: 80%;
   display: grid;
@@ -57,54 +108,77 @@ export default class Sport extends Vue {}
 .run {
   background-image: url('../../../public/sport/run.png');
   background-size: 65% 85%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .badminton {
   background-image: url('../../../public/sport/badmiton.png');
   background-size: 65% 85%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .basketball {
   background-image: url('../../../public/sport/basketball.png');
   background-size: 65% 85%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .soccer {
   background-image: url('../../../public/sport/soccer.png');
   background-size: 65% 85%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .bicycle {
   background-image: url('../../../public/sport/bicycle.png');
   background-size: 65% 85%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .swim {
   background-image: url('../../../public/sport/swim.png');
   background-size: 65% 85%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .weight {
   background-image: url('../../../public/sport/fitness.png');
   background-size: 65% 85%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .pingpang {
   background-image: url('../../../public/sport/pingpang.png');
   background-size: 65% 85%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .yoga {
   background-image: url('../../../public/sport/yoga.png');
   background-size: 65% 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.classForBasic {
+  background-image: url('../../../public/sport/check.png');
+  background-size: 15% 15%;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
+
+.classForChecked {
+  background-image: url('../../../public/sport/checked.png');
+  background-size: 15% 15%;
+  background-position: right bottom;
   background-repeat: no-repeat;
 }
 </style>

@@ -10,12 +10,23 @@
       <div class="typeLogo">
         <div
           :class="{ checkedInformation : isCheckedInformation , noCheckedInformation : !isCheckedInformation }"
+          @click="toggle(0)"
         ></div>
-        <div :class="{ checkedSleep : isCheckedSleep , noCheckedSleep : !isCheckedSleep }"></div>
-        <div :class="{ checkedHabit : isCheckedHabit , noCheckedHabit : !isCheckedHabit }"></div>
-        <div :class="{ checkedSport : isCheckedSport , noCheckedSport : !isCheckedSport}"></div>
+        <div
+          :class="{ checkedSleep : isCheckedSleep , noCheckedSleep : !isCheckedSleep }"
+          @click="toggle(1)"
+        ></div>
+        <div
+          :class="{ checkedHabit : isCheckedHabit , noCheckedHabit : !isCheckedHabit }"
+          @click="toggle(2)"
+        ></div>
+        <div
+          :class="{ checkedSport : isCheckedSport , noCheckedSport : !isCheckedSport}"
+          @click="toggle(3)"
+        ></div>
         <div
           :class="{ checkedEntertainment : isCheckedEntertainment , noCheckedEntertainment : !isCheckedEntertainment}"
+          @click="toggle(4)"
         ></div>
       </div>
     </div>
@@ -78,6 +89,13 @@ export default class extends Vue {
   private isCheckedEntertainment: boolean = true;
   public changePage() {
     this.currentPage++;
+  }
+  public toggle(label:number){
+    this.isChecked = this.isChecked.map((item)=>item = false)
+    this.isChecked[label] = true;
+    this.currentPage = label;
+    console.log(this.isChecked)
+
   }
 }
 </script>
