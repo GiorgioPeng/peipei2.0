@@ -173,7 +173,7 @@ html, body {
 .checkedInformation {
   position: fixed;
   left: 15vw;
-  top: 13vw;
+  top: 19vw;
   background-image: url('../../public/base/checkedInformation.png');
   background-size: 100% 100%;
   width: 12.5vw;
@@ -183,7 +183,7 @@ html, body {
 
 .checkedSleep {
   position: fixed;
-  top: 11vw;
+  top: 18vw;
   left: 30vw;
   background-image: url('../../public/base/checkedSleep.png');
   background-size: 100% 100%;
@@ -194,7 +194,7 @@ html, body {
 
 .checkedHabit {
   position: fixed;
-  top: 15vw;
+  top: 22vw;
   left: 44.7vw;
   background-image: url('../../public/base/checkedHabit.png');
   background-size: 100% 100%;
@@ -205,7 +205,7 @@ html, body {
 
 .checkedSport {
   position: fixed;
-  top: 21vw;
+  top: 26vw;
   left: 59.5vw;
   background-image: url('../../public/base/checkedSport.png');
   background-size: 100% 100%;
@@ -216,7 +216,7 @@ html, body {
 
 .checkedEntertainment {
   position: fixed;
-  top: 24vw;
+  top: 29vw;
   left: 74vw;
   background-image: url('../../public/base/checkedEntertainment.png');
   background-size: 100% 100%;

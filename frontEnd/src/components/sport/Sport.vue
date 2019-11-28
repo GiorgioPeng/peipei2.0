@@ -95,7 +95,7 @@ export default class Sport extends Vue {
 }
 
 .sportChoiceInput {
-  transform: translate(0vw, -27vh);
+  transform: translate(1vw, -31vh);
   width: 95%;
   height: 80%;
   display: grid;
