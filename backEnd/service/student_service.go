@@ -6,87 +6,115 @@ import (
 )
 
 type StudentService interface {
-	List (m map[string]interface{})  models.Result
-	Save(student models.Student)  models.Result
-	Create (student models.Student)
-	Get(id uint)  models.Result
-	Del(student models.Student)  models.Result
+	List(m map[string]interface{}) models.Result
+	Save(student models.Student) models.Result
+	Create(student models.Student) models.Result
+	Get(id uint) models.Result
+	Del(student models.Student) models.Result
+	Authenticate(id int, name string) models.Result
 }
 
-type studentService struct {}
-
-func NewStudentService() StudentService{
-	return &studentService{}
+type studentService struct {
+	repo repo.StudentRepository
 }
 
-var studentRepo = repo.NewStudentRepository()
+func NewStudentService() StudentService {
+	return &studentService{repo: repo.NewStudentRepository()}
+}
 
-func (u studentService)List (m map[string]interface{})  models.Result{
-	total, students := studentRepo.List(m)
-	maps := make(map[string]interface{},2)
-	maps["Total"] = total
-	maps["List"] = students
+func (u studentService) List(m map[string]interface{}) models.Result {
+	total, students, err := u.repo.List(m)
 	result := models.Result{}
+	if err != nil {
+		result.Data = nil
+		result.Code = -1
+		result.Msg = "FAILURE: " + err.Error()
+	}
+	maps := make(map[string]interface{}, 2)
+
+	maps["total"] = total
+	maps["students"] = students
 	result.Data = maps
 	result.Code = 200
-	result.Msg ="SUCCESS"
+	result.Msg = "SUCCESS"
 	return result
 }
-func (n studentService) Save(student models.Student) models.Result{
-	err :=  studentRepo.Save(student)
+func (n studentService) Save(student models.Student) models.Result {
+	err := n.repo.Save(student)
 	result := models.Result{}
-	if err != nil{
+	if err != nil {
 		result.Data = nil
 		result.Code = -1
-		result.Msg ="保存失败: "+err.Error()
-	}else{
+		result.Msg = "FAILURE: " + err.Error()
+	} else {
 		result.Data = nil
-		result.Code = 1
-		result.Msg ="保存成功"
+		result.Code = 200
+		result.Msg = "SUCCESS"
 	}
 	return result
 }
 
-func (n studentService) Create(student models.Student) models.Result{
-	err :=  studentRepo.Create(student)
+func (n studentService) Create(student models.Student) models.Result {
+	err := n.repo.Create(student)
 	result := models.Result{}
-	if err != nil{
+	if err != nil {
 		result.Data = nil
 		result.Code = -1
-		result.Msg ="创建失败: " + err.Error()
-	}else{
+		result.Msg = "FAILURE: " + err.Error()
+	} else {
 		result.Data = nil
-		result.Code = 1
-		result.Msg ="创建成功"
+		result.Code = 200
+		result.Msg = "SUCCESS"
 	}
 	return result
 }
 
-
-func (n bookService) Get(id uint)(result models.Result){
-	book,err := bookRepo.Get(id)
-	if err!= nil{
+func (n studentService) Get(id uint) models.Result {
+	student, err := n.repo.Get(id)
+	var result models.Result
+	if err != nil {
 		result.Data = nil
 		result.Code = -1
 		result.Msg = err.Error()
-	}else{
-		result.Data = book
-		result.Code = 0
-		result.Msg ="SUCCESS"
+	} else {
+		result.Data = student
+		result.Code = 200
+		result.Msg = "SUCCESS"
 	}
-	return
+	return result
 }
-func (n bookService) Del(book models.Book)(result models.Result){
-	err := bookRepo.Del(book)
-	if err!= nil{
+func (n studentService) Del(student models.Student) models.Result {
+	err := n.repo.Del(student)
+	var result models.Result
+	if err != nil {
 		result.Data = nil
 		result.Code = -1
-		result.Msg = err.Error()
-	}else{
+		result.Msg = "FAILURE: " + err.Error()
+	} else {
 		result.Data = nil
-		result.Code = 0
-		result.Msg ="SUCCESS"
+		result.Code = 200
+		result.Msg = "SUCCESS"
 	}
-	return
+	return result
 }
 
+func (n studentService) Authenticate(id int, name string) models.Result {
+	err, isSuper := n.repo.Authenticate(id, name)
+	var result models.Result
+	if err != nil {
+		result.Data = nil
+		result.Code = -1
+		result.Msg = "FAILURE: " + err.Error()
+	} else {
+		if isSuper {
+			result.Data = nil
+			result.Code = 1000
+			result.Msg = "SUPER LOGIN SUCCESS"
+		} else {
+			result.Data = nil
+			result.Code = 200
+			result.Msg = "SUCCESS"
+		}
+	}
+	return result
+}
