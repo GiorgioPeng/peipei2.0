@@ -4,15 +4,15 @@ import (
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/sessions"
 	"github.com/spf13/cast"
-	"peipei2/constants"
+	"log"
 	"peipei2/models"
 	"peipei2/service"
 )
 
 type StudentController struct {
-	Ctx     iris.Context
+	Sess    *sessions.Session
 	Service service.StudentService
-	Sess    sessions.Session
+	Ctx     iris.Context
 }
 
 func NewStudentController() *StudentController {
@@ -20,51 +20,66 @@ func NewStudentController() *StudentController {
 }
 
 func (g *StudentController) Get() (result models.Result) {
+	log.Println("Enter Get()")
+	log.Println(g.Ctx.Path())
 	if g.Sess.GetBooleanDefault("IsSuper", false) == false {
 		return models.Result{Data: nil, Code: -1, Msg: "you are not super manager"}
 	}
 	r := g.Ctx
 	m := make(map[string]interface{})
-	page := r.URLParam("page")
-	size := r.URLParam("size")
+	page := r.URLParamIntDefault("page", 0)
+	size := r.URLParamIntDefault("size", 0)
 	m["page"] = page
 	m["size"] = size
 	return g.Service.List(m)
 }
 
-func (g *StudentController) Post() models.Result {
+func (g *StudentController) PostLogin() models.Result {
+	log.Println("Enter Post()")
+	log.Println(g.Ctx.Path())
 	r := g.Ctx
-	if r.URLParam("action") == constants.HTTP_ACTION_REGISTER {
-		if g.Sess.GetBooleanDefault("IsSuper", false) == false {
-			return models.Result{Data: nil, Code: -1, Msg: "you are not super manager"}
-		}
-		student := models.Student{}
-		student.ID = cast.ToUint(r.PostValue("id"))
-		student.Name = cast.ToString(r.PostValue("name"))
-		student.Gender = cast.ToBool(r.PostValue("gender"))
-		student.SchoolID = cast.ToUint(r.PostValue("school_id"))
-		student.MajorID = cast.ToUint(r.PostValue("major_id"))
-		return g.Service.Create(student)
+
+	name := r.PostValue("name")
+	id, _ := r.PostValueInt("id")
+	result := g.Service.Authenticate(id, name)
+
+	if result.Code == 200 {
+		g.Sess.Set("Authenticated", true)
+		g.Sess.Set("ID", id)
+	} else if result.Code == 1000 {
+		g.Sess.Set("Authenticated", true)
+		g.Sess.Set("IsSuper", true)
+		g.Sess.Set("ID", id)
 	} else {
-		name := r.PostValue("name")
-		id, _ := r.PostValueInt("id")
-		result := g.Service.Authenticate(id, name)
-		if result.Code == 200 {
-			g.Sess.Set("Authenticated", true)
-			g.Sess.Set("ID", id)
-		} else if result.Code == 100 {
-			g.Sess.Set("Authenticated", true)
-			g.Sess.Set("IsSuper", true)
-			g.Sess.Set("ID", id)
-		} else {
-			g.Sess.Set("Authenticated", false)
-		}
-		return result
+		g.Sess.Set("Authenticated", false)
 	}
+	return result
 
 }
 
-func (g *StudentController) PutSave() models.Result {
+func (g *StudentController) PostRegister() models.Result {
+	log.Println("Enter Post()")
+	log.Println(g.Ctx.Path())
+	r := g.Ctx
+	if g.Sess.GetBooleanDefault("IsSuper", false) == false {
+		return models.Result{Data: nil, Code: -1, Msg: "you are not super manager"}
+	}
+	student := models.Student{}
+	student.ID = cast.ToUint(r.PostValue("id"))
+	student.Name = cast.ToString(r.PostValue("name"))
+	student.Gender = cast.ToBool(r.PostValue("gender"))
+	student.SchoolID = cast.ToUint(r.PostValue("school_id"))
+	student.MajorID = cast.ToUint(r.PostValue("major_id"))
+	return g.Service.Create(student)
+
+}
+
+func (g *StudentController) PutBy(id int) models.Result {
+	log.Println("Enter Put()")
+	log.Println(g.Ctx.Path())
+	if g.Sess.GetIntDefault("ID", 0) != id && g.Sess.GetBooleanDefault("IsSuper", false) == false {
+		return models.Result{Data: nil, Code: -1, Msg: "you can't modify this account"}
+	}
 	r := g.Ctx
 	student := models.Student{}
 	student.ID = cast.ToUint(r.PostValue("id"))
@@ -95,6 +110,8 @@ func (g *StudentController) PutSave() models.Result {
 }
 
 func (g *StudentController) GetBy(id uint) models.Result {
+	log.Println("Enter GetBy()")
+	log.Println(g.Ctx.Path())
 	if g.Sess.GetBooleanDefault("Authenticated", false) == false {
 		return models.Result{Data: nil, Code: -1, Msg: "please login in first"}
 	}
@@ -107,10 +124,25 @@ func (g *StudentController) GetBy(id uint) models.Result {
 		return models.Result{Data: nil, Code: -1, Msg: "you can't get info for " + cast.ToString(id)}
 	}
 	return g.Service.Get(id)
+}
 
+func (g *StudentController) GetMe() models.Result {
+	log.Println("Enter GetMe()")
+	log.Println(g.Ctx.Path())
+	if g.Sess.GetBooleanDefault("Authenticated", false) == false {
+		return models.Result{Data: nil, Code: -1, Msg: "please login in first"}
+	}
+
+	ID, err := g.Sess.GetInt("ID")
+	if err != nil {
+		return models.Result{Code: -1, Msg: "FAILURE: " + err.Error(), Data: nil}
+	}
+	return g.Service.Get(uint(ID))
 }
 
 func (g *StudentController) DeleteBy() models.Result {
+	log.Println("Enter DeleteBy()")
+	log.Println(g.Ctx.Path())
 	if g.Sess.GetBooleanDefault("IsSuper", false) == false {
 		return models.Result{Data: nil, Code: -1, Msg: "you are not super manager"}
 	}
