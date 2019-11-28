@@ -5,9 +5,9 @@ import (
 )
 
 type Result struct {
-	Code   int
-	Msg    string
-	Data   interface{}
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data"`
 }
 
 func NewResult(data interface{}, c int, m ...string) *Result {
@@ -27,11 +27,10 @@ func NewResult(data interface{}, c int, m ...string) *Result {
 	return r
 }
 
-
-func (res Result) JsonEncode() ([]byte, error){
-	data ,err:= json.Marshal(res)
+func (res Result) JsonEncode() ([]byte, error) {
+	data, err := json.Marshal(res)
 	if err != nil {
 		return nil, err
 	}
-	return data, err
+	return data, nil
 }
