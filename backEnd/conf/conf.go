@@ -10,7 +10,6 @@ import (
 	"time"
 )
 
-//user:password@(localhost)/dbname?charset=utf8&parseTime=True&loc=Local
 type DBConfig struct {
 	DBuser     string `json:"db_user"`
 	DBpassword string `json:"db_password"`
@@ -28,11 +27,15 @@ type Sysconfig struct {
 var (
 	Config  = &Sysconfig{}
 	hasInit = false
+	//pwd, _  = os.Getwd()
+	//path    = filepath.Dir(pwd)
 )
 
 func init() {
 	if !hasInit {
-		data, err := ioutil.ReadFile("../config.json")
+		configPath := "config.json"
+		//configPath := filepath.Join(path,"config.json")
+		data, err := ioutil.ReadFile(configPath)
 		if err != nil {
 			fmt.Println(err)
 			return

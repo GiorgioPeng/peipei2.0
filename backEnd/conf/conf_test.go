@@ -1,9 +1,11 @@
 package conf
 
-import "testing"
+import (
+	"testing"
+)
 
-func Test1(t *testing.T){
+func Test1(t *testing.T) {
 
-	t.Logf("%+v",*Config)
+	t.Logf("%+v", *Config)
 
 }

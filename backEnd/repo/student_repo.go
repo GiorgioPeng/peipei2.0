@@ -32,7 +32,7 @@ func (n studentRepository) List(m map[string]interface{}) (int, []models.Student
 	db.Table("peipei2_students").Count(&total)
 	size := m["size"]
 	page := m["page"]
-	if size == nil || page == nil {
+	if size == 0 || page == 0 {
 		err := db.Find(&students).Error
 		return total, students, err
 	} else {
@@ -42,7 +42,7 @@ func (n studentRepository) List(m map[string]interface{}) (int, []models.Student
 			page = 1
 		}
 		if size < 1 {
-			size = 10
+			size = 1
 		}
 		err := db.Limit(size).Offset((page - 1) * cast.ToInt(size)).Find(&students).Error
 		return total, students, err
@@ -80,7 +80,7 @@ func (n studentRepository) Authenticate(id int, name string) (error, bool) {
 		return errors.New("ID does not exist"), false
 	}
 	if name != student.Name {
-		return errors.New("wrong password"), false
+		return errors.New("wrong information"), false
 	}
 	return nil, student.IsSuper
 }
