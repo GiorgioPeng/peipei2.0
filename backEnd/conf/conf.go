@@ -6,7 +6,6 @@ import (
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/sessions/sessiondb/redis"
 	"io/ioutil"
-	"log"
 	"time"
 )
 
@@ -45,7 +44,7 @@ func init() {
 			fmt.Println(err)
 			return
 		}
-		log.Println("Start loading config")
+		//log.Println("Start loading config")
 		Config.RedisConfig.Clusters = nil
 		Config.RedisConfig.Timeout = time.Duration(30) * time.Second
 		Config.RedisConfig.Driver = redis.Redigo()

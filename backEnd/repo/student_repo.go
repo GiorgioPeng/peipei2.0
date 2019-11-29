@@ -8,7 +8,7 @@ import (
 )
 
 type StudentRepository interface {
-	List(m map[string]interface{}) (int, []models.Student, error)
+	List(m map[string]int) (int, []models.Student, error)
 	Save(book models.Student) error
 	Create(book models.Student) error
 	Get(id uint) (models.Student, error)
@@ -24,16 +24,16 @@ var db = datasource.GetDB()
 
 type studentRepository struct{}
 
-func (n studentRepository) List(m map[string]interface{}) (int, []models.Student, error) {
+func (n studentRepository) List(m map[string]int) (int, []models.Student, error) {
 	var (
 		students []models.Student
 		total    int
 	)
-	db.Table("peipei2_students").Count(&total)
 	size := m["size"]
 	page := m["page"]
-	if size == 0 || page == 0 {
+	if size == 0 && page == 0 {
 		err := db.Find(&students).Error
+		total = len(students)
 		return total, students, err
 	} else {
 		size := cast.ToInt(m["size"])
@@ -45,6 +45,7 @@ func (n studentRepository) List(m map[string]interface{}) (int, []models.Student
 			size = 1
 		}
 		err := db.Limit(size).Offset((page - 1) * cast.ToInt(size)).Find(&students).Error
+		total = len(students)
 		return total, students, err
 	}
 
@@ -69,7 +70,7 @@ func (n studentRepository) Get(id uint) (models.Student, error) {
 }
 
 func (n studentRepository) Del(student models.Student) error {
-	err := db.Unscoped().Delete(&student).Error
+	err := db.Delete(&student).Error //软删除
 	return err
 }
 

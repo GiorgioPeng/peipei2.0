@@ -6,7 +6,7 @@ import (
 )
 
 type StudentService interface {
-	List(m map[string]interface{}) models.Result
+	List(m map[string]int) models.Result
 	Save(student models.Student) models.Result
 	Create(student models.Student) models.Result
 	Get(id uint) models.Result
@@ -22,7 +22,7 @@ func NewStudentService() StudentService {
 	return &studentService{repo: repo.NewStudentRepository()}
 }
 
-func (u studentService) List(m map[string]interface{}) models.Result {
+func (u studentService) List(m map[string]int) models.Result {
 	total, students, err := u.repo.List(m)
 	result := models.Result{}
 	if err != nil {

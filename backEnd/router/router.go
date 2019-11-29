@@ -6,7 +6,6 @@ import (
 	"github.com/kataras/iris/v12/mvc"
 	"github.com/kataras/iris/v12/sessions"
 	"github.com/kataras/iris/v12/sessions/sessiondb/redis"
-	"log"
 	"peipei2/conf"
 	"peipei2/controllers"
 	"time"
@@ -14,10 +13,10 @@ import (
 
 func NewApp() *iris.Application {
 	cookieName := "studentCookie"
-	sess := sessions.New(sessions.Config{Cookie: cookieName, Expires: 60 * time.Minute, AllowReclaim: true})
+	sess := sessions.New(sessions.Config{Cookie: cookieName, Expires: 45 * time.Minute, AllowReclaim: true})
 	redisConfig := conf.Config.RedisConfig
 	sysConfig := conf.Config.IrisConfig
-	log.Println(redisConfig)
+	//log.Println(redisConfig)
 	db := redis.New(redisConfig)
 
 	sess.UseDatabase(db)
