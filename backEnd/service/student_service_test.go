@@ -9,7 +9,7 @@ import (
 
 func TestStudentService_List(t *testing.T) {
 	studentService := NewStudentService()
-	m := map[string]interface{}{}
+	m := map[string]int{}
 	m["size"] = 1
 	m["page"] = 1
 	result := studentService.List(m)

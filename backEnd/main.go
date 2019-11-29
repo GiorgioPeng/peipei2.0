@@ -8,6 +8,7 @@ import (
 
 func main() {
 	log.Printf("Starting server")
+
 	app := router.NewApp()
 	err := app.Run(iris.Addr(":8000"), iris.WithoutServerError(iris.ErrServerClosed))
 	if err != nil {
