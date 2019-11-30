@@ -80,7 +80,7 @@ export default class Sport extends Vue {
   background-size: 100% 100%;
   height: 80vw;
   width: 73.2vw;
-  margin: 16vw auto;
+  margin: 14vh auto;
 }
 
 .sportChoice {
