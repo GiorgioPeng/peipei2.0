@@ -41,32 +41,32 @@ export default class Sleep extends Vue {}
   align-items: center;
   width: 84vw;
   height: 45.5vh;
-}
 
-.hint {
-  background-image: url('../../../public/sleep/firstPage/settingHint.png');
-  background-size: 100% 100%;
-  width: 44.5vw;
-  height: 6vw;
-  margin-left: -6vw;
-}
+  .hint {
+    background-image: url('../../../public/sleep/firstPage/settingHint.png');
+    background-size: 100% 100%;
+    width: 44.5vw;
+    height: 6vw;
+    margin-left: -6vw;
+  }
 
-.day {
-  background-image: url('../../../public/sleep/firstPage/day.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: left top;
-  width: 51.6vw;
-  height: 34.1vw;
-}
+  .day {
+    background-image: url('../../../public/sleep/firstPage/day.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+    width: 51.6vw;
+    height: 34.1vw;
+  }
 
-.night {
-  background-image: url('../../../public/sleep/firstPage/night.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: left top;
-  width: 51.6vw;
-  height: 34.1vw;
+  .night {
+    background-image: url('../../../public/sleep/firstPage/night.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+    width: 51.6vw;
+    height: 34.1vw;
+  }
 }
 
 .weightHint {

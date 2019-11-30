@@ -31,7 +31,7 @@ export default class extends Vue {
   private studentId: string = "";
   public isAgree: boolean = false;
 
-  private loginFunction(){
+  private loginFunction() {
     if (this.isAgree) {
       router.push({
         path: "/dataCollect"
@@ -39,7 +39,7 @@ export default class extends Vue {
     } else {
       console.log(this.isAgree);
     }
-  };
+  }
 }
 </script>
 
@@ -56,68 +56,68 @@ export default class extends Vue {
   background-size: 100% 100%;
   background-position: top left;
   background-repeat: no-repeat;
-}
 
-.logo {
-  clear: both;
-  display: block;
-  margin: auto;
-  padding-top: 19vh;
-  width: 38.4vw;
-  height: 38.4vw;
-}
+  .logo img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 
-.logo img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
+  .logo {
+    clear: both;
+    display: block;
+    margin: auto;
+    padding-top: 19vh;
+    width: 38.4vw;
+    height: 38.4vw;
+  }
 
-.classForInputData {
-  display: flex;
-  flex-direction: column;
-  width: 70vw;
-  margin: 10vh auto;
-  margin-bottom: 0;
-  height: 200px;
-  justify-content: space-around;
-}
+  .classForInputData {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    margin: 10vh auto;
+    margin-bottom: 0;
+    height: 200px;
+    justify-content: space-around;
+  }
 
-.classForInputData input {
-  width: 100%;
-  height: 22%;
-  border: none;
-  outline: none;
-  background-image: url('../../public/Login/input.png');
-  background-size: 100% 100%;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0);
-  color: rgba(77, 137, 138, 0.7);
-}
+  .classForInputData input {
+    width: 100%;
+    height: 22%;
+    border: none;
+    outline: none;
+    background-image: url('../../public/Login/input.png');
+    background-size: 100% 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(77, 137, 138, 0.7);
+  }
 
-.loginButton {
-  margin: 3vh auto;
-  background-image: url('../../public/Login/loginButton.png');
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  width: 47vw;
-  height: 11vw;
-}
+  .loginButton {
+    margin: 3vh auto;
+    background-image: url('../../public/Login/loginButton.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 47vw;
+    height: 11vw;
+  }
 
-.agree {
-  display: flex;
-  justify-content: center;
-}
+  .agree {
+    display: flex;
+    justify-content: center;
 
-input['type="checkbox"'] {
-  outline: none;
-  background-color: white;
-  border: 5px solid #5bbfbf;
-}
+    input['type="checkbox"'] {
+      outline: none;
+      background-color: white;
+      border: 5px solid #5bbfbf;
+    }
 
-label {
-  font-size: 12px;
-  color: rgba(77, 137, 138, 0.7);
+    label {
+      font-size: 12px;
+      color: rgba(77, 137, 138, 0.7);
+    }
+  }
 }
 </style>

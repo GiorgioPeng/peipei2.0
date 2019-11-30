@@ -90,12 +90,11 @@ export default class extends Vue {
   public changePage() {
     this.currentPage++;
   }
-  public toggle(label:number){
-    this.isChecked = this.isChecked.map((item)=>item = false)
+  public toggle(label: number) {
+    this.isChecked = this.isChecked.map(item => (item = false));
     this.isChecked[label] = true;
     this.currentPage = label;
-    console.log(this.isChecked)
-
+    console.log(this.isChecked);
   }
 }
 </script>
@@ -121,44 +120,44 @@ html, body {
 .top {
   width: 100%;
   height: 20vh;
-}
 
-.topBgImg {
-  background-image: url('../../public/base/topBase.png');
-  background-position: top left;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20vh;
-  z-index: 3;
-}
+  .topBgImg {
+    background-image: url('../../public/base/topBase.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    z-index: 3;
+  }
 
-.setting {
-  background-image: url('../../public/base/settingBase.png');
-  background-position: top left;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  width: 8vw;
-  height: 8vw;
-  position: fixed;
-  top: 10vw;
-  left: 5vw;
-  z-index: 4;
-}
+  .setting {
+    background-image: url('../../public/base/settingBase.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 8vw;
+    height: 8vw;
+    position: fixed;
+    top: 10vw;
+    left: 5vw;
+    z-index: 4;
+  }
 
-.label {
-  position: fixed;
-  top: 8vw;
-  left: 30vw;
-  z-index: 4;
-  background-image: url('../../public/base/sportTitle.png');
-  background-size: 100% 100%;
-  background-position: left top;
-  width: 40vw;
-  height: 12vw;
+  .label {
+    position: fixed;
+    top: 8vw;
+    left: 30vw;
+    z-index: 4;
+    background-image: url('../../public/base/sportTitle.png');
+    background-size: 100% 100%;
+    background-position: left top;
+    width: 40vw;
+    height: 12vw;
+  }
 }
 
 .main {

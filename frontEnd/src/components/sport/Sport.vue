@@ -81,104 +81,104 @@ export default class Sport extends Vue {
   height: 80vw;
   width: 73.2vw;
   margin: 14vh auto;
-}
 
-.sportChoice {
-  transform: translate(1.5vw, 3vh);
-  width: 95%;
-  height: 80%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
-}
+  .sportChoice {
+    transform: translate(1.5vw, 3vh);
+    width: 95%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
 
-.sportChoiceInput {
-  transform: translate(1vw, -31vh);
-  width: 95%;
-  height: 80%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
-}
+    .run {
+      background-image: url('../../../public/sport/run.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.run {
-  background-image: url('../../../public/sport/run.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+    .badminton {
+      background-image: url('../../../public/sport/badmiton.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.badminton {
-  background-image: url('../../../public/sport/badmiton.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+    .basketball {
+      background-image: url('../../../public/sport/basketball.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.basketball {
-  background-image: url('../../../public/sport/basketball.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+    .soccer {
+      background-image: url('../../../public/sport/soccer.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.soccer {
-  background-image: url('../../../public/sport/soccer.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+    .bicycle {
+      background-image: url('../../../public/sport/bicycle.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.bicycle {
-  background-image: url('../../../public/sport/bicycle.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+    .swim {
+      background-image: url('../../../public/sport/swim.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.swim {
-  background-image: url('../../../public/sport/swim.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+    .weight {
+      background-image: url('../../../public/sport/fitness.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.weight {
-  background-image: url('../../../public/sport/fitness.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+    .pingpang {
+      background-image: url('../../../public/sport/pingpang.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.pingpang {
-  background-image: url('../../../public/sport/pingpang.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+    .yoga {
+      background-image: url('../../../public/sport/yoga.png');
+      background-size: 65% 85%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
 
-.yoga {
-  background-image: url('../../../public/sport/yoga.png');
-  background-size: 65% 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  .sportChoiceInput {
+    transform: translate(1vw, -31vh);
+    width: 95%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+  
+    .classForBasic {
+      background-image: url('../../../public/sport/check.png');
+      background-size: 15% 15%;
+      background-position: right bottom;
+      background-repeat: no-repeat;
+    }
 
-.classForBasic {
-  background-image: url('../../../public/sport/check.png');
-  background-size: 15% 15%;
-  background-position: right bottom;
-  background-repeat: no-repeat;
-}
-
-.classForChecked {
-  background-image: url('../../../public/sport/checked.png');
-  background-size: 15% 15%;
-  background-position: right bottom;
-  background-repeat: no-repeat;
+    .classForChecked {
+      background-image: url('../../../public/sport/checked.png');
+      background-size: 15% 15%;
+      background-position: right bottom;
+      background-repeat: no-repeat;
+    }
+  }
 }
 </style>

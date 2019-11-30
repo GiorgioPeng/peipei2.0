@@ -1,6 +1,15 @@
 <template>
   <div class="informationFrame">
-    <div class="personalData"></div>
+    <div class="personalData">
+      <div class="school"></div>
+      <div>
+        <div class="name"></div>
+        <div class="studentId"></div>
+      </div>
+      <div class="futurePlan"></div>
+      <div class="major"></div>
+      <div class="gender"></div>
+    </div>
     <div class="positionAndFood"></div>
   </div>
 </template>
@@ -28,6 +37,16 @@ export default class Information extends Vue {}
   background-size: 100% 100%;
   height: 40vw;
   width: 65vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .school {
+    background-image: url('../../../public/information/school.png');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 20%;
+  }
 }
 
 .positionAndFood {
