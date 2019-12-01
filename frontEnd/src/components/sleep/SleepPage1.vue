@@ -24,7 +24,7 @@ export default class Sleep extends Vue {}
 <style lang="stylus">
 .line {
   width: 5.5vw;
-  height: 40vh;
+  height: 45vh;
   background-image: url('../../../public/sleep/firstPage/line.png');
   background-size: 100% 100%;
   position: absolute;
@@ -37,10 +37,10 @@ export default class Sleep extends Vue {}
   margin-top: 15vw;
   margin-bottom: 4vw;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 84vw;
-  height: 45.5vh;
+  height: 70vh;
 
   .hint {
     background-image: url('../../../public/sleep/firstPage/settingHint.png');
@@ -55,8 +55,9 @@ export default class Sleep extends Vue {}
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: left top;
-    width: 51.6vw;
-    height: 34.1vw;
+    width: 60vw;
+    height: 30%;
+    margin-left: 6vw;
   }
 
   .night {
@@ -64,16 +65,21 @@ export default class Sleep extends Vue {}
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: left top;
-    width: 51.6vw;
-    height: 34.1vw;
+    width: 60vw;
+    height: 30%;
+    margin-left: 6vw;
   }
 }
 
-.weightHint {
-  height: 5.8vw;
-  width: 24.7vw;
-  background-image: url('../../../public/sleep/firstPage/weightHint.png');
-  background-size: 100% 100%;
-  margin-left: 4.6vw;
+.weightPart {
+  height: 20vh;
+
+  .weightHint {
+    height: 5.8vw;
+    width: 24.7vw;
+    background-image: url('../../../public/sleep/firstPage/weightHint.png');
+    background-size: 100% 100%;
+    margin-left: 4.6vw;
+  }
 }
 </style>

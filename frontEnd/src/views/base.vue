@@ -103,7 +103,7 @@ export default class extends Vue {
 </script>
 <style lang="stylus">
 html, body {
-  height: 100%;
+  height: 120%;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -129,7 +129,7 @@ html, body {
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -144,14 +144,14 @@ html, body {
     background-size: 100% 100%;
     width: 8vw;
     height: 8vw;
-    position: fixed;
+    position: absolute;
     top: 10vw;
     left: 5vw;
     z-index: 4;
   }
 
   .label {
-    position: fixed;
+    position: absolute;
     top: 8vw;
     left: 30vw;
     z-index: 4;
@@ -164,16 +164,12 @@ html, body {
 }
 
 .main {
-  position: fixed;
-  top: 20vh;
-  left: 8vw;
+  transform:translate(8vw,6vh)
   width: 84vw;
-  height: 64.5vh;
-  overflow: hidden;
 }
 
 .checkedInformation {
-  position: fixed;
+  position: absolute;
   left: 15vw;
   top: 19vw;
   background-image: url('../../public/base/checkedInformation.png');
@@ -184,7 +180,7 @@ html, body {
 }
 
 .checkedSleep {
-  position: fixed;
+  position: absolute;
   top: 18vw;
   left: 30vw;
   background-image: url('../../public/base/checkedSleep.png');
@@ -195,7 +191,7 @@ html, body {
 }
 
 .checkedHabit {
-  position: fixed;
+  position: absolute;
   top: 22vw;
   left: 44.7vw;
   background-image: url('../../public/base/checkedHabit.png');
@@ -206,7 +202,7 @@ html, body {
 }
 
 .checkedSport {
-  position: fixed;
+  position: absolute;
   top: 26vw;
   left: 59.5vw;
   background-image: url('../../public/base/checkedSport.png');
@@ -217,7 +213,7 @@ html, body {
 }
 
 .checkedEntertainment {
-  position: fixed;
+  position: absolute;
   top: 29vw;
   left: 74vw;
   background-image: url('../../public/base/checkedEntertainment.png');
@@ -228,12 +224,10 @@ html, body {
 }
 
 .nextOne {
-  position: fixed;
-  bottom: 5vw;
-  left: 27.5vw;
   background-image: url('../../public/base/nextBase.png');
   background-size: 100% 100%;
   width: 44.5vw;
   height: 11.5vw;
+  transform translate(28vw,10vh)
 }
 </style>
