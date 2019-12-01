@@ -78,12 +78,12 @@ export default class Sport extends Vue {
 .sportBg {
   background-image: url('../../../public/sport/division.png');
   background-size: 100% 100%;
-  height: 80vw;
-  width: 73.2vw;
-  margin: 14vh auto;
+  height: 550px;
+  width: 85vw;
+  margin:50px auto;
 
   .sportChoice {
-    transform: translate(1.5vw, 3vh);
+    transform: translate(1.5vw, 50px);
     width: 95%;
     height: 80%;
     display: grid;
@@ -157,7 +157,7 @@ export default class Sport extends Vue {
   }
 
   .sportChoiceInput {
-    transform: translate(1vw, -31vh);
+    transform: translate(1vw, -400px);
     width: 95%;
     height: 80%;
     display: grid;

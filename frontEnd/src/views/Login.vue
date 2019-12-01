@@ -68,7 +68,7 @@ export default class extends Vue {
 
 .Login {
   width: 100%;
-  height: 100%;
+  height: 800px;
   background-image: url('../../public/Login/background.png');
   background-size: 100% 100%;
   background-position: top left;
@@ -84,7 +84,7 @@ export default class extends Vue {
     clear: both;
     display: block;
     margin: auto;
-    padding-top: 19vh;
+    padding-top: 100px;
     width: 38.4vw;
     height: 38.4vw;
   }
@@ -93,7 +93,7 @@ export default class extends Vue {
     display: flex;
     flex-direction: column;
     width: 70vw;
-    margin: 10vh auto;
+    margin: 25px auto;
     margin-bottom: 0;
     height: 200px;
     justify-content: space-around;
@@ -112,7 +112,7 @@ export default class extends Vue {
   }
 
   .loginButton {
-    margin: 3vh auto;
+    margin: 30px auto;
     background-image: url('../../public/Login/loginButton.png');
     background-position: 0 0;
     background-repeat: no-repeat;

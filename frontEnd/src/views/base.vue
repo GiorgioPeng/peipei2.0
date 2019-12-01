@@ -56,7 +56,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import pushData from '../api/pushData'
+import pushData from "../api/pushData";
 import Information from "@/components/information/Information.vue";
 import Habit from "@/components/habit/Habit.vue";
 import Sport from "@/components/sport/Sport.vue";
@@ -90,8 +90,8 @@ export default class extends Vue {
   private isCheckedEntertainment: boolean = true;
   public changePage() {
     this.currentPage++;
-    let res = pushData()
-    console.log(res)
+    let res = pushData();
+    console.log(res);
   }
   public toggle(label: number) {
     this.isChecked = this.isChecked.map(item => (item = false));
@@ -102,27 +102,24 @@ export default class extends Vue {
 }
 </script>
 <style lang="stylus">
-html, body {
-  height: 120%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
+html,body{
+  margin:0;
+  padding:0;
 }
-
 .base {
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: 1100px;
   width: 100%;
   background-image: url('../../public/base/backgroundBase.png');
-  background-position: top left;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  overflow: hidden;
 }
 
 .top {
   width: 100%;
-  height: 20vh;
+  height: 150px;
 
   .topBgImg {
     background-image: url('../../public/base/topBase.png');
@@ -133,7 +130,7 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 20vh;
+    height: 150px;
     z-index: 3;
   }
 
@@ -164,14 +161,14 @@ html, body {
 }
 
 .main {
-  transform:translate(8vw,6vh)
+  transform: translate(8vw, 35px);
   width: 84vw;
 }
 
 .checkedInformation {
   position: absolute;
   left: 15vw;
-  top: 19vw;
+  top: 75px;
   background-image: url('../../public/base/checkedInformation.png');
   background-size: 100% 100%;
   width: 12.5vw;
@@ -181,7 +178,7 @@ html, body {
 
 .checkedSleep {
   position: absolute;
-  top: 18vw;
+  top: 70px;
   left: 30vw;
   background-image: url('../../public/base/checkedSleep.png');
   background-size: 100% 100%;
@@ -192,7 +189,7 @@ html, body {
 
 .checkedHabit {
   position: absolute;
-  top: 22vw;
+  top: 80px;
   left: 44.7vw;
   background-image: url('../../public/base/checkedHabit.png');
   background-size: 100% 100%;
@@ -203,7 +200,7 @@ html, body {
 
 .checkedSport {
   position: absolute;
-  top: 26vw;
+  top: 100px;
   left: 59.5vw;
   background-image: url('../../public/base/checkedSport.png');
   background-size: 100% 100%;
@@ -214,7 +211,7 @@ html, body {
 
 .checkedEntertainment {
   position: absolute;
-  top: 29vw;
+  top: 110px;
   left: 74vw;
   background-image: url('../../public/base/checkedEntertainment.png');
   background-size: 100% 100%;
@@ -228,6 +225,6 @@ html, body {
   background-size: 100% 100%;
   width: 44.5vw;
   height: 11.5vw;
-  transform translate(28vw,10vh)
+  transform: translate(28vw, 80px);
 }
 </style>

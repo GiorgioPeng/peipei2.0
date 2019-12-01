@@ -81,7 +81,7 @@ export default class Entertainment extends Vue {
 <style lang="stylus">
 .gamePhoto {
   width: 100%;
-  height: 18vh;
+  height: 150px;
   margin: 0;
 
   .biggerGamePhoto {
@@ -89,8 +89,8 @@ export default class Entertainment extends Vue {
     background-size: 100% 100%;
     width: 60%;
     height: 100%;
-    margin: 10vh auto;
-    margin-bottom: 1vh;
+    margin: 50px auto;
+    margin-bottom: 5px;
   }
 
   .smallerGamePhoto {
@@ -98,14 +98,14 @@ export default class Entertainment extends Vue {
     background-size: 100% 100%;
     width: 40%;
     height: 70%;
-    transform: translate(70vw, -16vh);
+    transform: translate(70vw, -130px);
   }
 }
 
 .frame {
   width: 80%;
-  height: 50vw;
-  margin: 1vh auto;
+  height: 400px;
+  margin: 20px auto;
   margin-bottom: -8px;
 
   .biggerFrame {
@@ -113,6 +113,7 @@ export default class Entertainment extends Vue {
     background-size: 100% 100%;
     width: 100%;
     height: 95%;
+    padding-top:10px;
 
     .smallGameChoice {
       display: flex;
@@ -153,17 +154,17 @@ export default class Entertainment extends Vue {
     }
 
     .siderBar {
-      transform: translate(64vw, -20vh);
+      transform: translate(64vw, -130px);
       background-image: url('../../../public/entertainment/firstPage/siderbar.png');
       background-size: 100% 100%;
-      height: 85%;
+      height: 80%;
       width: 2%;
 
       .circle {
         background-image: url('../../../public/entertainment/firstPage/smallChoose.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        margin-left: -3px;
+        margin-left: -4px;
         height: 13px;
         width: 13px;
       }
@@ -186,6 +187,6 @@ export default class Entertainment extends Vue {
   background-position: left top;
   margin-top: 5px;
   width: 100%;
-  height: 8vh;
+  height: 80px;
 }
 </style>

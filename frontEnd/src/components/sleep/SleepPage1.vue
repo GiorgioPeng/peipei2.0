@@ -24,7 +24,7 @@ export default class Sleep extends Vue {}
 <style lang="stylus">
 .line {
   width: 5.5vw;
-  height: 45vh;
+  height: 350px;
   background-image: url('../../../public/sleep/firstPage/line.png');
   background-size: 100% 100%;
   position: absolute;
@@ -40,7 +40,7 @@ export default class Sleep extends Vue {}
   justify-content: space-around;
   align-items: center;
   width: 84vw;
-  height: 70vh;
+  height: 500px;
 
   .hint {
     background-image: url('../../../public/sleep/firstPage/settingHint.png');
@@ -72,7 +72,7 @@ export default class Sleep extends Vue {}
 }
 
 .weightPart {
-  height: 20vh;
+  height: 100px;
 
   .weightHint {
     height: 5.8vw;

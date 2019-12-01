@@ -21,20 +21,20 @@ export default class Habit extends Vue {}
   justify-content: space-around;
   align-items: center;
   width: 84vw;
-  height: 55.5vh;
+  height: 700px;
 
   .aircondition {
     background-image: url('../../../public/habit/aircondition.png');
     background-size: 100% 100%;
-    height: 50.6vw;
-    width: 62.6vw;
+    height: 45%;
+    width: 80vw;
   }
 
   .smoke {
     background-image: url('../../../public/habit/smoke.png');
     background-size: 100% 100%;
-    height: 50.6vw;
-    width: 62.6vw;
+    height: 45%;
+    width: 80vw;
   }
 }
 </style>
