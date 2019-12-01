@@ -3,7 +3,6 @@ package datasource
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	"log"
 	"peipei2/conf"
 	"peipei2/models"
 	"strings"
@@ -22,18 +21,20 @@ func GetDB() *gorm.DB {
 func init() {
 	// user:password@(localhost)/dbname?charset=utf8&parseTime=True&loc=Local
 	path := strings.Join([]string{dbConfig.DBuser, ":", dbConfig.DBpassword, "@(", dbConfig.DBip, ":", dbConfig.DBport, ")/", dbConfig.DBname, "?charset=utf8&parseTime=true"}, "")
-	log.Println(path)
+	//log.Println(path)
 	var err error
 	db, err = gorm.Open("mysql", path)
 	if err != nil {
 		panic(err)
 	}
 	db.SingularTable(false) //表生成结尾不带s
-	db.DB().SetConnMaxLifetime(1 * time.Second)
-	db.DB().SetMaxIdleConns(20)   //设置最大闲置个数
-	db.DB().SetMaxOpenConns(2000) //最大打开的连接数
-	db.LogMode(true)              // 启用Logger，显示详细日志
-	db = db.Set("gorm:save_associations", false)  //关闭自动更新关联字段
+	db.DB().SetConnMaxLifetime(2 * time.Second)
+	db.DB().SetMaxIdleConns(20)                  //设置最大闲置个数
+	db.DB().SetMaxOpenConns(2000)                //最大打开的连接数
+	db.LogMode(true)                             // 启用Logger，显示详细日志
+	db = db.Set("gorm:save_associations", false) //关闭自动更新关联字段
+	db.LogMode(false)                            //关闭日志
+
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
 		return "peipei2_" + defaultTableName
 	}
@@ -48,7 +49,6 @@ func init() {
 		}
 	}
 
-
 	if !db.HasTable(&models.Major{}) {
 		if err := db.Set("gorm:table_options", "ENGINE=InnoDB DEFAULT CHARSET=utf8").CreateTable(&models.Major{}).Error; err != nil {
 			panic(err)
@@ -59,17 +59,15 @@ func init() {
 		}
 	}
 
-
 	if !db.HasTable(&models.Student{}) {
 		if err := db.Set("gorm:table_options", "ENGINE=InnoDB DEFAULT CHARSET=utf8").CreateTable(&models.Student{}).Error; err != nil {
 			panic(err)
 		}
-	}else {
+	} else {
 		if err := db.AutoMigrate(&models.Student{}).Error; err != nil {
 			panic(err)
 		}
 	}
-
 
 	if !db.HasTable(&models.Game{}) {
 		if err := db.CreateTable(&models.Game{}).Error; err != nil {
@@ -95,6 +93,6 @@ func init() {
 		}
 	}
 
-	log.Println("Initializing database successfully")
+	//log.Println("Initializing database successfully")
 
 }

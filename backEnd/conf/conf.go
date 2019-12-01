@@ -6,11 +6,9 @@ import (
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/sessions/sessiondb/redis"
 	"io/ioutil"
-	"log"
 	"time"
 )
 
-//user:password@(localhost)/dbname?charset=utf8&parseTime=True&loc=Local
 type DBConfig struct {
 	DBuser     string `json:"db_user"`
 	DBpassword string `json:"db_password"`
@@ -28,11 +26,15 @@ type Sysconfig struct {
 var (
 	Config  = &Sysconfig{}
 	hasInit = false
+	//pwd, _  = os.Getwd()
+	//path    = filepath.Dir(pwd)
 )
 
 func init() {
 	if !hasInit {
-		data, err := ioutil.ReadFile("../config.json")
+		configPath := "config.json"
+		//configPath := filepath.Join(path,"config.json")
+		data, err := ioutil.ReadFile(configPath)
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -42,7 +44,7 @@ func init() {
 			fmt.Println(err)
 			return
 		}
-		log.Println("Start loading config")
+		//log.Println("Start loading config")
 		Config.RedisConfig.Clusters = nil
 		Config.RedisConfig.Timeout = time.Duration(30) * time.Second
 		Config.RedisConfig.Driver = redis.Redigo()
