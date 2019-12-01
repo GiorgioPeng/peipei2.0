@@ -2,10 +2,10 @@
   <div class="informationFrame">
     <div class="personalData">
       <div class="personalDataFrame">
-        <input class="school" :value="school" />
+        <input class="school" :value="school" placeholder="学校"/>
         <div>
-          <input class="name" :value="name" />
-          <input class="studentId" :value="id" />
+          <input class="name" :value="name" placeholder="姓名"/>
+          <input class="studentId" :value="id" placeholder="学号"/>
         </div>
         <el-select v-model="futurePlan" class="major" size="mini" placeholder="未来规划">
           <el-option v-for="item in planChoice" :key="item.value" :value="item.value"></el-option>
@@ -80,10 +80,10 @@ Vue.use(ElementUI);
   name: "Information"
 })
 export default class Information extends Vue {
-  private school: string = "学校";
-  private name: string = "姓名";
-  private id: string = "学号";
-  private futurePlan: string = "未来规划";
+  private school: string = "";
+  private name: string = "";
+  private id: string = "";
+  private futurePlan: string = "";
   private planChoice: object[] = [
     {
       value: "搬砖"
@@ -141,7 +141,7 @@ export default class Information extends Vue {
     { value: "湖北" },
     { value: "广西" },
     { value: "甘肃" },
-    { value: "江西" },
+    { value: "山西" },
     { value: "内蒙古" },
     { value: "陕西" },
     { value: "吉林" },

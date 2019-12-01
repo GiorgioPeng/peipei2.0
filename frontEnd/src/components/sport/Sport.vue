@@ -21,14 +21,16 @@
         ></div>
       </div>
     </div>
-    <el-slider
-      v-model="sportWeight"
-      :step="1"
-      :min="1"
-      :max="5"
-      :input-size="mini"
-      style="transform:translate(3vw,-80px);width:80vw"
-    ></el-slider>
+    <div class="sportWeight">
+      <el-slider
+        v-model="sportWeight"
+        :step="1"
+        :min="1"
+        :max="5"
+        :input-size="mini"
+        style="transform:translate(8vw,-80px);width:70vw"
+      ></el-slider>
+    </div>
   </div>
 </template>
 <script lang='ts'>
@@ -84,13 +86,15 @@ export default class Sport extends Vue {
 }
 </script>
 <style lang="stylus">
-.el-slider__bar {
-  background-color: #56bebf !important;
-}
+.sportWeight {
+  .el-slider__bar {
+    background-color: #56bebf !important;
+  }
 
-.el-slider__button {
-  border: none !important;
-  background-color: #56bebf !important;
+  .el-slider__button {
+    border: none !important;
+    background-color: #56bebf !important;
+  }
 }
 
 .sportBg {
