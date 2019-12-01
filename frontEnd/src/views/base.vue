@@ -56,6 +56,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
+import pushData from '../api/pushData'
 import Information from "@/components/information/Information.vue";
 import Habit from "@/components/habit/Habit.vue";
 import Sport from "@/components/sport/Sport.vue";
@@ -89,6 +90,8 @@ export default class extends Vue {
   private isCheckedEntertainment: boolean = true;
   public changePage() {
     this.currentPage++;
+    let res = pushData()
+    console.log(res)
   }
   public toggle(label: number) {
     this.isChecked = this.isChecked.map(item => (item = false));

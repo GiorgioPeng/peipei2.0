@@ -1,15 +1,37 @@
 import { Vue } from "vue-property-decorator";
-export default class extends Vue {
-    private school:string = '';
-    private name:string = '';
-    private studentId:string = '';
-    private furturePlan:string = '';
-    private major:string = '';
-    private gender:string = '';
-    private province:string = '';
-    private weightOfProvince:string='';
-    private sour:string='';
-    private sweet:string = '';
-    private spicy:string= '';
-    private weightOfTaste:string= '';
+
+interface IStudentData {
+    school:string
+    name:string
+    studentId:string
+    furturePlan:string
+    major:string
+    gender:string
+    province:string
+    weightOfProvince:string
+    sour:string
+    sweet:string
+    spicy:string
+    weightOfTaste:string
+
+}
+export default class Data extends Vue {
+    public static sudentData: IStudentData = {
+        school: '',
+        name: '',
+        studentId: '',
+        furturePlan: '',
+        major: '',
+        gender: '',
+        province: '',
+        weightOfProvince: '',
+        sour: '',
+        sweet: '',
+        spicy: '',
+        weightOfTaste: '',
+    }
+    public static destinationUrl:string = ''
+    public static getJsonData(): any {
+        return JSON.stringify(this.sudentData);
+    }
 }
