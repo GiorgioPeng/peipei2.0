@@ -6,7 +6,7 @@
     <div class="classForInputData">
       <input type="text" v-model.lazy="school" placeholder="学校" />
       <input type="text" v-model.lazy="name" placeholder="姓名" />
-      <input type="text" v-model.lazy="studentId" placeholder="学号" />
+      <input type="text" v-model.lazy="id" placeholder="学号" />
     </div>
     <div class="loginButton" @click="loginFunction"></div>
     <div class="agree">
@@ -20,6 +20,8 @@
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 // import VueRouter from "vue-router";
 import router from "@/router/index";
+import login from '../api/login'
+import LoginData from '../data/loginData'
 // Vue.use(VueRouter);
 
 @Component({
@@ -28,10 +30,25 @@ import router from "@/router/index";
 export default class extends Vue {
   private school: string = "";
   private name: string = "";
-  private studentId: string = "";
-  public isAgree: boolean = false;
+  private id: string = "";
+  private isAgree: boolean = false;
+  private async loginFunction() {
+    for(let i in LoginData.loginData){
+      if(i=='school'){
+        LoginData.loginData.school = this.school;
+      }
+      else if(i=='name'){
+        LoginData.loginData.name = this.name;
+      }
+      else if(i=='id'){
+        LoginData.loginData.id = this.id;
+      }
 
-  private loginFunction() {
+    }
+    console.log(LoginData.loginData)
+    
+    let res = await login();
+    console.log(res)
     if (this.isAgree) {
       router.push({
         path: "/dataCollect"
