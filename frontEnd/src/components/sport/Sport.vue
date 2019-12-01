@@ -21,6 +21,14 @@
         ></div>
       </div>
     </div>
+    <el-slider
+      v-model="sportWeight"
+      :step="1"
+      :min="1"
+      :max="5"
+      :input-size="mini"
+      style="transform:translate(3vw,-80px);width:80vw"
+    ></el-slider>
   </div>
 </template>
 <script lang='ts'>
@@ -68,6 +76,7 @@ export default class Sport extends Vue {
       checked: false
     }
   ];
+  private sportWeight: number = 1;
   public handleClick(kind: any) {
     if (!kind.checked) kind.checked = true;
     else kind.checked = false;
@@ -75,12 +84,21 @@ export default class Sport extends Vue {
 }
 </script>
 <style lang="stylus">
+.el-slider__bar {
+  background-color: #56bebf !important;
+}
+
+.el-slider__button {
+  border: none !important;
+  background-color: #56bebf !important;
+}
+
 .sportBg {
   background-image: url('../../../public/sport/division.png');
   background-size: 100% 100%;
-  height: 550px;
+  height: 500px;
   width: 85vw;
-  margin:50px auto;
+  margin: 100px auto;
 
   .sportChoice {
     transform: translate(1.5vw, 50px);
@@ -157,7 +175,7 @@ export default class Sport extends Vue {
   }
 
   .sportChoiceInput {
-    transform: translate(1vw, -400px);
+    transform: translate(-2vw, -358px);
     width: 95%;
     height: 80%;
     display: grid;
@@ -165,7 +183,7 @@ export default class Sport extends Vue {
     grid-template-rows: repeat(3, 1fr);
     grid-row-gap: 10px;
     grid-column-gap: 10px;
-  
+
     .classForBasic {
       background-image: url('../../../public/sport/check.png');
       background-size: 15% 15%;
