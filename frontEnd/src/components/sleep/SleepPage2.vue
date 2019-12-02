@@ -1,8 +1,8 @@
 <template>
   <div class="timeSetting">
     <div class="dayOrNight">
-      <div class="getUp"></div>
-      <div class="goToBed"></div>
+      <div :class="{getUpChecked:timeFrame=='AM',getUp:timeFrame=='PM'}" @click="timeFrame='AM'"></div>
+      <div :class="{goToBedChecked:timeFrame=='PM',goToBed:timeFrame=='AM'}" @click="timeFrame='PM'"></div>
     </div>
     <div style="display:flex;justify-content:center;align-items:center">
       <div class="back"></div>
@@ -73,9 +73,9 @@ export default class SleepPage2 extends Vue {
         res.split(":").map(res => {
           res.split("").map(res => (this.am[i++] = res));
         });
-      }); 
-      for(let k in this.amChoiceDetail){
-        if(this.amChoiceDetail[k]==tempTime)
+      });
+      for (let k in this.amChoiceDetail) {
+        if (this.amChoiceDetail[k] == tempTime)
           this.amChoiceDetail[k] = this.amChoiceDetail[2];
       }
       this.amChoiceDetail[2] = tempTime;
@@ -96,6 +96,11 @@ export default class SleepPage2 extends Vue {
           res.split("").map(res => (this.pm[i++] = res));
         });
       });
+      for (let k in this.pmChoiceDetail) {
+        if (this.pmChoiceDetail[k] == tempTime)
+          this.pmChoiceDetail[k] = this.pmChoiceDetail[2];
+      }
+      this.pmChoiceDetail[2] = tempTime;
 
       this.$forceUpdate();
       console.log(this.pm);
@@ -127,8 +132,22 @@ export default class SleepPage2 extends Vue {
       height: 25px;
     }
 
+    .getUpChecked {
+      background-image: url('../../../public/sleep/secondPage/getUpTimeChecked.png');
+      background-size: 100% 100%;
+      width: 100px;
+      height: 25px;
+    }
+
     .goToBed {
       background-image: url('../../../public/sleep/secondPage/sleepTime.png');
+      background-size: 100% 100%;
+      width: 100px;
+      height: 25px;
+    }
+
+    .goToBedChecked {
+      background-image: url('../../../public/sleep/secondPage/sleepTimeChecked.png');
       background-size: 100% 100%;
       width: 100px;
       height: 25px;
@@ -213,7 +232,6 @@ export default class SleepPage2 extends Vue {
 
           div:nth-child(3) {
             color: #56bebf;
-            font-size: 35px;
             background-image: url('../../../public/sleep/secondPage/greySlot.png');
             background-size: 100% 100%;
           }

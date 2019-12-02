@@ -4,8 +4,8 @@
     <div class="sleepPageFirstFrame">
       <div class="settingSleepTime"></div>
       <div class="hint"></div>
-      <div class="day"></div>
-      <div class="night"></div>
+      <div class="day" @click="page=false"></div>
+      <div class="night" @click="page=false"></div>
     </div>
     <div class="weightPart">
       <div class="weightHint"></div>
@@ -22,7 +22,7 @@ import SleepPage2 from './SleepPage2.vue'
   components:{SleepPage2}
 })
 export default class Sleep extends Vue {
-  private page:boolean =  false;
+  private page:boolean =  true;
 }
 </script>
 <style lang="stylus">
