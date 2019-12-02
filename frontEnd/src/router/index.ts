@@ -5,11 +5,6 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "login",
-    component: () => import("@/views/Login.vue")
-  },
-  {
     path: "/login",
     name: "login",
     component: () => import("@/views/Login.vue")
@@ -18,7 +13,13 @@ const routes = [
     path: "/dataCollect",
     name: "dataCollect",
     component: () => import("@/views/base.vue")
-  }
+  },
+
+  {
+    path: "*",
+    name: "login",
+    component: () => import("@/views/Login.vue")
+  },
 ];
 
 const router = new VueRouter({

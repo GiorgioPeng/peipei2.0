@@ -2,26 +2,29 @@
   <div class="informationFrame">
     <div class="personalData">
       <div class="personalDataFrame">
-        <input class="school" :value="school" placeholder="学校"/>
+        <input class="school" :value="school" placeholder="学校" />
         <div>
-          <input class="name" :value="name" placeholder="姓名"/>
-          <input class="studentId" :value="id" placeholder="学号"/>
+          <input class="name" :value="name" placeholder="姓名" />
+          <input class="studentId" :value="id" placeholder="学号" />
         </div>
-        <el-select v-model="futurePlan" class="major" size="mini" placeholder="未来规划">
+        <el-select v-model="futurePlan" class="major" placeholder="未来规划">
           <el-option v-for="item in planChoice" :key="item.value" :value="item.value"></el-option>
         </el-select>
-        <el-select v-model="major" class="major" size="mini" placeholder="专业">
+        <el-select v-model="major" class="major" placeholder="专业">
           <el-option v-for="item in majorChoice" :key="item.value" :value="item.value"></el-option>
         </el-select>
         <div class="gender">
           <div :class="{male:!gender.male,maleChecked:gender.male}" @click="chooseGender('male')"></div>
-          <div :class="{female:!gender.female,femaleChecked:gender.female}" @click="chooseGender('female')"></div>
+          <div
+            :class="{female:!gender.female,femaleChecked:gender.female}"
+            @click="chooseGender('female')"
+          ></div>
         </div>
       </div>
     </div>
     <div class="positionAndFood">
       <div class="provinceCollect">
-        <el-select v-model="province" class="province" size="mini" placeholder="省份">
+        <el-select v-model="province" class="province" placeholder="省份">
           <el-option v-for="item in provinceChoice" :key="item.value" :value="item.value"></el-option>
         </el-select>
         <el-slider
@@ -29,7 +32,6 @@
           :step="1"
           :min="1"
           :max="5"
-          :input-size="mini"
           style="transform:translate(20vw,133px);width:45vw"
         ></el-slider>
       </div>
@@ -39,7 +41,6 @@
           :step="1"
           :min="1"
           :max="5"
-          :input-size="mini"
           style="transform:translate(46vw,175px);width:20vw"
         ></el-slider>
         <el-slider
@@ -47,7 +48,6 @@
           :step="1"
           :min="1"
           :max="5"
-          :input-size="mini"
           style="transform:translate(46vw,165px);width:20vw"
         ></el-slider>
         <el-slider
@@ -55,7 +55,6 @@
           :step="1"
           :min="1"
           :max="5"
-          :input-size="mini"
           style="transform:translate(46vw,155px);width:20vw"
         ></el-slider>
         <el-slider
@@ -64,7 +63,6 @@
           :step="1"
           :min="1"
           :max="5"
-          :input-size="mini"
           style="transform:translate(20vw,195px);width:45vw"
         ></el-slider>
       </div>
@@ -162,14 +160,13 @@ export default class Information extends Vue {
   private sweet: number = 1;
   private spicy: number = 1;
   private tasteWeight: number = 1;
-  private chooseGender(genderClick:string){
-    if(genderClick==='male'){
-      this.gender['male'] = true;
-      this.gender['female'] = false;
-    }
-    else{
-      this.gender['male'] = false;
-      this.gender['female'] = true;
+  private chooseGender(genderClick: string) {
+    if (genderClick === "male") {
+      this.gender["male"] = true;
+      this.gender["female"] = false;
+    } else {
+      this.gender["male"] = false;
+      this.gender["female"] = true;
     }
   }
 }
@@ -186,6 +183,7 @@ export default class Information extends Vue {
   text-align: center !important;
   padding: 0 !important;
   color: #707070 !important;
+  height:31.5px !important;
 }
 
 .el-input__suffix {
@@ -354,9 +352,11 @@ input {
   width: 85vw;
 
   .province {
+    width: 50%;
     background-image: url('../../../public/information/futurePlan.png');
     background-size: 100% 100%;
     height: 30px;
+    line-height: 30px;
     transform: translate(35vw, 70px);
   }
 }

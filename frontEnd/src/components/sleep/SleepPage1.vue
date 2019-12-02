@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="page">
     <div class="line"></div>
     <div class="sleepPageFirstFrame">
       <div class="settingSleepTime"></div>
@@ -12,14 +12,18 @@
       <div class="weight"></div>
     </div>
   </div>
+  <SleepPage2 v-else></SleepPage2>
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-
+import SleepPage2 from './SleepPage2.vue'
 @Component({
-  name: "Sleep"
+  name: "Sleep",
+  components:{SleepPage2}
 })
-export default class Sleep extends Vue {}
+export default class Sleep extends Vue {
+  private page:boolean =  false;
+}
 </script>
 <style lang="stylus">
 .line {
